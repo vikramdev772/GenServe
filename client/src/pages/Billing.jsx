@@ -1,9 +1,8 @@
 import React, { useState } from "react";
 import { Card, Radio, Tooltip } from "antd";
 import { CreditCardOutlined } from "@ant-design/icons";
-import "../styles/Billing.css";
 
-const Billing = () => {
+const Billing = ({ darkTheme }) => {
   const [amount, setAmount] = useState("");
   const [buttonText, setButtonText] = useState("pay with card");
 
@@ -17,9 +16,11 @@ const Billing = () => {
 
   return (
     <>
-      <h1 style={{ marginBottom: 20,marginTop:20 }}>Billing</h1>
+      <h1 className={`mb-10 mt-10 ${darkTheme ? "text-white" : "text-black"}`}>
+        Billing
+      </h1>
 
-      <Card title="Balance" style={{ marginBottom: 20 }}>
+      <Card title="Balance" className="mb-10">
         <div className="balance-container">
           <p>Balance: $0.000</p>
           <p>Spend Limit: $30 /hr</p>
@@ -27,53 +28,41 @@ const Billing = () => {
         </div>
       </Card>
 
-      <Card title="Add Credit" style={{ marginBottom: 20 }}>
+      <Card title="Add Credit" className="mb-10">
         <div className="add-credits-container">
           <div className="add-credits-input-container">
-           <div className="add-credits-tooltip">
-           <Radio.Group
-              onChange={handleRadioChange}
-              style={{
-                marginBottom: 16,
-                display: 'flex',
-                justifyContent: 'space-around'
-              }}
-            >
-              <Radio.Button value="25">25$</Radio.Button>
-              <Radio.Button value="50">50$</Radio.Button>
-              <Radio.Button value="100">100$</Radio.Button>
-            </Radio.Group>
-           </div>
-            <input
-              type="text"
-              value={amount}
-              onChange={(e) => setAmount(e.target.value)}
-              placeholder="Amount"
-              className="add-credits-input"
-            />
+            <div className="add-credits-tooltip">
+              <Radio.Group
+                onChange={handleRadioChange}
+                className="mb-4 flex justify-flex-start"
+              >
+                <div className="flex flex-row gap-2 ">
+                  <Radio.Button value="25">$25</Radio.Button>
+                  <Radio.Button value="50">$50</Radio.Button>
+                  <Radio.Button value="100">$100</Radio.Button>
+                </div>
+              </Radio.Group>
+            </div>
+            <div className="flex items-center justify-flex-start">
+              <input
+                type="text"
+                value={amount}
+                onChange={(e) => setAmount(e.target.value)}
+                placeholder="Amount"
+                className="rounded border border-gray-400 p-2 w-full"
+              />
+            </div>
           </div>
 
-          <div className="payment-icons-container">
-            {/* <img
-              src="https://cdn-icons-png.flaticon.com/128/5700/5700956.png"
-              alt="card"
-              className="payment-icon card"
-              style={{ width: "50px", height: "50px" }}
-              onClick={() => setButtonText("pay with card")}
-            />
-            <img
-              src="https://cdn-icons-png.flaticon.com/128/9691/9691117.png"
-              alt="crypto"
-              className="payment-icon crypto"
-              style={{ width: "40px", height: "40px" }}
-              onClick={() => setButtonText("pay with crypto")}
-            /> */}
-            <button className="paybtn">pay with card</button>
+          <div className="payment-icons-container mt-10">
+            <button className="text-lg px-8 py-2 border-0 shadow-md bg-blue-500 text-white rounded-md transition duration-300 transform-gpu hover:bg-gradient-to-r from-blue-400 to-blue-600 active:translate-y-1">
+              {buttonText}
+            </button>
           </div>
         </div>
       </Card>
 
-      <Card title="Automatic pay" style={{ marginBottom: 20 }}>
+      <Card title="Automatic pay" className="mb-10">
         <div className="automatic-pay-container">
           <p>
             Configure automatic billing by adding a card to your account. When
@@ -81,26 +70,30 @@ const Billing = () => {
             reload RunPod credits by billing your saved card max once per hour
             for the Auto-Pay amount that is configured below.
           </p>
-          <div className="add-credits-button-container">
+          <div className="add-credits-button-container flex  items-center justify-flex-start flex-row  gap-[100px]">
             <img
               src="https://cdn-icons-png.flaticon.com/128/5700/5700956.png"
               alt=""
+              className="w-12 h-12"
             />
-            <Tooltip
-              title="You must have at least $100 in credits to enable automatic payments"
-              placement="bottom"
-            >
-              <div className="add-credits-button">
-                <CreditCardOutlined /> Add credits
-              </div>
-            </Tooltip>
+            <div className="flex items-center p-2 border border-black rounded-md hover:border-gray-200">
+              <Tooltip
+                title="You must have at least $100 in credits to enable automatic payments"
+                placement="bottom"
+              >
+                <div className="add-credits-button text-[12px]">
+                   <CreditCardOutlined /> Add credits
+                </div>
+              </Tooltip>
+            </div>
           </div>
         </div>
       </Card>
 
       <Card
         title="Recent Transactions"
-        style={{ marginBottom: 20, backgroundColor: "", color: "" }}
+        className="mb-10"
+        style={{ backgroundColor: "", color: "" }}
         headStyle={{ color: "" }}
       >
         <div className="recent-transactions-container">
