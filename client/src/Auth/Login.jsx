@@ -46,9 +46,10 @@ const Login = () => {
                 Forgot your password?
               </a>
             </div>
+
             <button
               type="submit"
-              className="bg-blue-400 w-max m-auto px-6 py-2 rounded text-white text-sm font-normal"
+              className="text-lg px-8 py-2 border-0 shadow-md bg-blue-500 text-white rounded-md transition duration-300 transform-gpu hover:bg-gradient-to-r from-blue-400 to-blue-600 active:translate-y-1"
             >
               Submit
             </button>

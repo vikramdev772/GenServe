@@ -1,5 +1,5 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React from "react";
+import { Link } from "react-router-dom";
 import Navbar from "../screens/Navbar";
 
 const Register = () => {
@@ -54,15 +54,16 @@ const Register = () => {
                 className="rounded border border-gray-600 text-sm w-full font-normal leading-[18px] text-white bg-gray-700 tracking-[0px] appearance-none block h-11 m-0 p-[11px] focus:ring-2 ring-offset-2 ring-gray-500 outline-0"
               />
             </div>
+
             <button
               type="submit"
-              className="bg-blue-400 w-max m-auto px-6 py-2 rounded text-white text-sm font-normal"
+              className="text-lg px-8 py-2 border-0 shadow-md bg-blue-500 text-white rounded-md transition duration-300 transform-gpu hover:bg-gradient-to-r from-blue-400 to-blue-600 active:translate-y-1"
             >
               Sign Up
             </button>
           </form>
           <div className="text-sm text-center mt-[1.6rem] text-gray-400">
-            Already have an account?{' '}
+            Already have an account?
             <Link className="text-sm text-blue-400" to="/login">
               Log in
             </Link>
