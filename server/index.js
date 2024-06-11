@@ -17,6 +17,15 @@ const port = process.env.PORT || 3000;
 
 app.get("/", (req, res) => res.send("Server is running successfully"));
 
+app.get("/h",(req,res)=>{
+    res.json({
+        sucess:true,
+        message : "server is running sucessfully 💻",  
+        api:"https://datacare.onrender.com"
+        
+    })
+})
+
 app.use((err, req, res, next) => {
     err.statusCode = err.statusCode || 500;
     err.status = err.status || "error";
